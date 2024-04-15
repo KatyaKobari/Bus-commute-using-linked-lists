@@ -130,7 +130,7 @@ int main() {
                     printBusesPassengers(bus); //print all buses info.
 
                 } else {
-                    printf("You cannot assign the same file more than once.\n");
+                    printf("You cannot download the same file more than once.\n");
                 }
             }
         }
@@ -200,26 +200,19 @@ int main() {
             } else {
                 StuDelete(id, mainStudentList); //delete passenger from main list
                 Bus *b = bus->Next;
-                int flag=0;
                 for (int i = 0; i <
                                 busSize(bus); i++) { //loop to find the bus that the passenger in it and delete passenger from the bus.
                     if (StuFind(id, b->StudentLinkedList) != NULL) {
-//                        if ((b->space) < (b->capacity)) {
+                        if ((b->space) < (b->capacity)) {
                             b->space += 1; //space will increment by 1 when we delete passenger.
                             StuDelete(id, b->StudentLinkedList); //delete passenger from bus.
-                            flag=1;
                             break;
-//                        } else {
-//                            StuDelete(id, b->StudentLinkedList);
-//                            flag=1;
-//                            break;
-//                        }
+                        } else {
+                            StuDelete(id, b->StudentLinkedList);
+                        }
                     } else {
                         b = b->Next;
                     }
-                }
-                if(!(flag)){
-                    StuDelete(id,unmatchedStu);
                 }
             }
         }
@@ -228,7 +221,7 @@ int main() {
             int num;
             scanf("%d", &num);
             Bus *b = busFind(num, bus);
-//            b->space += 1;
+            b->space += 1;
             Student *s = b->StudentLinkedList;
             busDelete(num, bus); //delete bus from linked list
             MainAssignStudents(s, bus,
@@ -299,7 +292,7 @@ int StuSize(Student *L) {
     return count;
 }
 
-void StuPrintList(Student *L) { //print student linked list info
+void StuPrintList(Student *L) { //print student linked litt info
     Student *P = L;
     if (StuIsEmpty(L))
         printf("Empty list\n");
@@ -502,7 +495,7 @@ void loadStudents(Student *mainStudentList) { //read passengers file and store i
                         "r"); //open the input file and put it in read mode.
     char line[size]; //array for the lines(pointer);
     char *value;
-    if (input == NULL) { //if file doesn't exist.
+    if (input == NULL) { //if file dosen't exist.
         printf("Can't opening this file.");
     }
     while (fgets(line, size, input)) {//read from the input file -->using gets from string library.
