@@ -1,7 +1,5 @@
 # Bus-commute-using-linked-lists
-*  Implement a system, that is based on Linked 
-  List, to assign passengers to various busses to help them commute 
-  based on their scheduled times.
+  Implement a system, that is based on Linked List, to assign passengers to various busses to help them commute based on their scheduled times.
 
 Functionality:
 - Loading Data: The program allows loading data for buses and passengers from text files.
